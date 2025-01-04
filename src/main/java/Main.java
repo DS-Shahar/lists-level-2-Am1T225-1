@@ -72,7 +72,37 @@ public static Node exc2(Node<Integer>head) {
 
         return sortedList;  // מחזירים את הרשימה הממוינת
     }
-
+public static boolean exc4(Node<Integer>head) {
+	Node<Integer> current = head;
+	Node<Integer> first = head;
+	boolean bool=true;
+	while(current.hasNext()) {
+		while(first.hasNext()) {
+			if(current.getValue().equals(first.getNext().getValue())) 
+				bool=false;
+			else {
+				first=first.getNext();
+			}
+		}
+		first=head;
+	}
+	return bool;
+}
+public static Node exc5(Node<Integer>head) {
+	Node<Integer> current = head;
+	Node<Integer> first = head;
+	while(current.hasNext()) {
+		while(first.hasNext()) {
+			if(current.getValue().equals(first.getNext().getValue())) 
+				first.setNext(first.getNext().getNext());
+			else {
+				first=first.getNext();
+			}
+		}
+		first=head;
+	}
+	return head;
+}
 public static void main(String[] args) {
 	Node<Integer>l1=new Node<>(6);
 	Node<Integer>order1=new Node<>(3);
@@ -92,6 +122,6 @@ public static void main(String[] args) {
 	rder1.setNext(rder2);
 	rder2.setNext(rder3);
 	rder3.setNext(rder4);
-	System.out.println(exc2(l1));
+	System.out.println(exc5(l1));
 }
 }
