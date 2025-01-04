@@ -28,49 +28,49 @@ public static Node exc1(Node<Integer>l1,Node<Integer>l2) {
 	return order.getNext();
 }
 public static Node exc2(Node<Integer>head) {
-        Node<Integer> sortedList = null;  // רשימה חדשה למיון
-        Node<Integer> current = head;     // מצביע על הצומת הנוכחי ברשימה המקורית
+        Node<Integer> sortedList = null; 
+        Node<Integer> current = head;     
 
-        // כל עוד יש צמתים ברשימה המקורית
+       
         while (current != null) {
-            Node<Integer> minNode = current;  // נניח שהצומת הנוכחי הוא המינימום
-            Node<Integer> prevMinNode = null;  // מצביע על הצומת של המינימום הקודם
-            Node<Integer> prevCurrent = null;  // מצביע על הצומת של הצומת הנוכחי
+            Node<Integer> minNode = current;  
+            Node<Integer> prevMinNode = null;  
+            Node<Integer> prevCurrent = null;  
 
-            // נבדוק אם יש צמתים נוספים כדי למצוא את המינימום
+            
             Node<Integer> temp = current;
             while (temp != null) {
                 if (temp.getValue() < minNode.getValue()) {
                     minNode = temp;
-                    prevMinNode = prevCurrent;  // עדכון הצומת הקודם של המינימום
+                    prevMinNode = prevCurrent; 
                 }
                 prevCurrent = temp;
                 temp = temp.getNext();
             }
 
-            // אם המינימום לא נמצא בראש, נסיר אותו מהרשימה המקורית
+            
             if (minNode != current) {
                 if (prevMinNode != null) {
-                    prevMinNode.setNext(minNode.getNext());  // הסר את המינימום מהרשימה
+                    prevMinNode.setNext(minNode.getNext());  
                 }
             } else {
-                // אם המינימום היה בראש, פשוט נעדכן את ראש הרשימה המקורית
+          
                 current = current.getNext();
             }
 
-            // נוסיף את המינימום לרשימה הממוינת
+           
             if (sortedList == null) {
                 sortedList = minNode;
             } else {
                 Node<Integer> tempSorted = sortedList;
                 while (tempSorted.getNext() != null) {
-                    tempSorted = tempSorted.getNext();  // נגיע לסוף הרשימה הממוינת
+                    tempSorted = tempSorted.getNext();  
                 }
-                tempSorted.setNext(minNode);  // הוספנו את המינימום לסוף הרשימה הממוינת
+                tempSorted.setNext(minNode);  
             }
         }
 
-        return sortedList;  // מחזירים את הרשימה הממוינת
+        return sortedList; 
     }
 public static boolean exc4(Node<Integer>head) {
 	Node<Integer> current = head;
